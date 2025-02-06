@@ -1,22 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-/**
- * Utility function to debounce any given function.
- * The debounced function will only be invoked after `delay` milliseconds have passed since the last invocation.
- */
-function debounce(fn: Function, delay: number) {
-  let timeoutId: NodeJS.Timeout;
-  return function (...args: any[]) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn(...args), delay);
-  };
-}
-
-/**
- * Custom hook to manage search query parameter with debouncing.
- * @returns { searchQuery: string, setSearchQuery: (term: string) => void }
- */
 export const useSearch = () => {
   const navigate = useNavigate();
   const location = useLocation();
